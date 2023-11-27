@@ -57,7 +57,7 @@ const Signup = () => {
         return window.aptos;
       } else {
         alert('Petra wallet is not installed !')
-        window.open('https://petra.app/');
+        window.open("https://petra.app/");
       }
     };
     const wallet = getAptosWallet();

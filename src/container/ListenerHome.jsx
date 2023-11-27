@@ -1,5 +1,4 @@
 import React from 'react'
-import { makeStyles } from '@mui/styles';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -9,14 +8,6 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import PersonIcon from '@mui/icons-material/Person';
 
-const useStyles = makeStyles({
-  drawer: {
-    width: 240,
-  },
-  avatar: {
-    margin: 10,
-  },
-});
 
 const ListenerHome = () => {
     const classes = useStyles();

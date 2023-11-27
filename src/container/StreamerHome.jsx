@@ -11,7 +11,7 @@ const StreamerHome = () => {
         <Route path='revenuehistory' element={<RevenueHistory/>}/>
       </Routes>
       {location.pathname === "/home" && (
-        <div>
+        <div className='text-white'>
             hi
         </div>
       )}

@@ -1,0 +1,63 @@
+.side-bar {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  bottom: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.profile {
+  flex: 1;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.break {
+  flex: 0.01;
+}
+
+.following {
+  flex: 1;
+  background-color: white;
+  border-radius: 5px;
+}
+.main {
+  margin-left: 330px;
+}
+.logout-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.logout-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sec-part {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  padding: 50px;
+  margin: 0 70px;
+  padding-left: 0;
+  margin-left: 0;
+}
+.greet {
+  font-size: 70px;
+}
+.cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+    margin-right : 20px
+}
+.live-card{
+    margin-bottom: 20px;
+}

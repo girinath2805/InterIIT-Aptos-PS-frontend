@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        'dark-blue': '#010a37',
+        'dark-purple': '#120339'
+      },
       screens: {
         mf: "990px",
       },

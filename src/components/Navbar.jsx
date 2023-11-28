@@ -4,9 +4,9 @@ import {AiOutlineClose} from 'react-icons/ai'
 import { NavLink } from 'react-router-dom';
 
 const NavBarItem = ({ title, classprops }) => (
-    <li className={`mx-4 cursor-pointer ${classprops}`}>
-        <NavLink to={`/streamerhome/${title.replace(/\s+/g, '').toLowerCase()}`} className={({ isActive }) => (isActive ? 'text-white font-bold text-xl ease-out transform transition duration-500 scale-110 text-blue-500' : 'text-gray transform transition duration-500 hover:scale-110 hover:text-blue-500')}>{title}</NavLink>
-    </li> 
+  <li className={`mx-4 cursor-pointer ${classprops}`}>
+      <NavLink to={`/streamerhome/${title.replace(/\s+/g, '').toLowerCase()}`} className={({ isActive }) => (isActive ? 'active-link text-white font-bold text-xl ease-in transform transition duration-500 scale-110 text-blue-500' : 'inactive-link text-gray transform transition duration-500 hover:scale-110 hover:text-blue-500 ease-in')}>{title}</NavLink>
+  </li> 
 );
 
 

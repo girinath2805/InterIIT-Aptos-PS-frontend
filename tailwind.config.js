@@ -1,15 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      colors: {
-        'dark-blue': '#010a37',
-        'dark-purple': '#120339'
-      },
       screens: {
         mf: "990px",
       },
@@ -29,7 +22,6 @@ export default {
         "slide-in": "slide-in 0.5s ease-out",
       },
     },
-    
   },
   plugins: [],
-}
+};

@@ -7,7 +7,7 @@ const StreamerHome = () => {
   let location = useLocation();
 
   return (
-    <div className='gradient-bg-welcome h-screen bg-scroll'>
+    <div className='gradient-bg-welcome h-screen overflow-auto'>
       <Navbar/>
       <TransitionGroup>
         <CSSTransition

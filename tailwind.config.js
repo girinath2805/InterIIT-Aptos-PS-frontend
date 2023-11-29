@@ -2,6 +2,10 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontFamily:{
+      'welcome':['Nunito', 'sans-serif'],
+      'head':['Rubik', 'sans-serif']
+    },
     extend: {
       screens: {
         mf: "990px",

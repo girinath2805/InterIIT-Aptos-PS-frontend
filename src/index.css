@@ -27,6 +27,16 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
+  .black-glassmorphism {
+    background: rgba(0, 0, 0, 0.4);
+    border-bottom-left-radius: 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+
   @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
@@ -42,7 +52,7 @@
   
   .page-enter-active {
     transform: translateX(0);
-    transition: transform 300ms;
+    transition: transform 500ms;
   }
   
   .page-exit {
@@ -51,20 +61,7 @@
   
   .page-exit-active {
     transform: translateX(-100%);
-    transition: transform 300ms;
+    transition: transform 500ms;
   }
 
-  .active-link {
-    border-bottom: 2px solid white;
-    padding-bottom: 5px;
-  }
-  
-  .inactive-link {
-    transition: all 0.3s ease;
-  }
-  
-  .inactive-link:hover {
-    color: blue;
-    transform: scale(1.1);
-  }
   

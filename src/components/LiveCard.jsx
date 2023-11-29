@@ -34,7 +34,7 @@ export default function LiveCard() {
           src="https://images.unsplash.com/photo-1542773998-9325f0a098d7?auto=format&fit=crop&w=320"
           srcSet="https://images.unsplash.com/photo-1542773998-9325f0a098d7?auto=format&fit=crop&w=320&dpr=2 2x"
           loading="lazy"
-          alt=""
+          alt="img"
         />
       </CardCover>
       <CardCover

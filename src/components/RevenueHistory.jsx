@@ -67,7 +67,7 @@ const CopyToClipboard = ({ text }) => {
 const RevenueHistory = () => {
   return (
     <div className='text-white'>
-      <div className='flex justify-center text-4xl font-extrabold mt-7 py-7 font-welcome'>
+      <div className='flex justify-center text-center text-4xl font-extrabold mt-7 py-7 font-welcome'>
         Your Recent Transactions !
       </div>
       <div className='mx-10'>

@@ -15,10 +15,12 @@ const StreamerHome = () => {
           classNames="page"
           timeout={300}
         >
-          <Routes location={location}>
-            <Route path='stream' element={<Stream/>}/>
-            <Route path='revenuehistory' element={<RevenueHistory/>}/>
-          </Routes>
+          <div style={{ minHeight: '100vh' }}>
+            <Routes location={location}>
+              <Route path='stream' element={<Stream/>}/>
+              <Route path='revenuehistory' element={<RevenueHistory/>}/>
+            </Routes>
+          </div>
         </CSSTransition>
       </TransitionGroup>
       {location.pathname === "/home" && (

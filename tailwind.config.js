@@ -4,7 +4,8 @@ export default {
   theme: {
     fontFamily:{
       'welcome':['Nunito', 'sans-serif'],
-      'head':['Rubik', 'sans-serif']
+      'head':['Rubik', 'sans-serif'],
+      'nav':['Quicksand', 'sans-seri'],
     },
     extend: {
       screens: {

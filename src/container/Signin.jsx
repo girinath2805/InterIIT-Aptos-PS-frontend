@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,12 +17,8 @@ const defaultTheme = createTheme();
 
 const Signin = () => {
 
-  const [signer, setSigner] = useState('')
   const [isconnecting, setIsconnecting] = useState(false)
-
-
-  
-
+  const navigate = useNavigate()
 
   const connectWallet = async () => {
     const getAptosWallet = () => {
@@ -33,6 +30,8 @@ const Signin = () => {
       }
     };
     const wallet = getAptosWallet();
+    localStorage.setItem('wallet', wallet); // { address: string, address: string }
+
 
     setIsconnecting(true)
     try {
@@ -40,12 +39,15 @@ const Signin = () => {
       console.log(response); // { address: string, address: string }
 
       const account = await wallet.account();
-      setSigner(account)
-      console.log(signer.address); // { address: string, address: string }
+      console.log(account);
+      localStorage.setItem('address', account.address); // { address: string, address: string }
+      localStorage.setItem('address', account.address); // { address: string, address: string }
+
     } catch (error) {
       // { code: 4001, message: "User rejected the request."}
     }
     setIsconnecting(false)
+    navigate('/streamerhome/home', { replace: true });
   }
 
   const handleSignin = (() => {

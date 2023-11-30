@@ -3,22 +3,31 @@
 @tailwind utilities;
 
 .gradient-bg-welcome {
-    background-color:#0f0e13;
-    background-image: 
-      radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-      radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
-      radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
-  }
+  background-color: #0f0e13;
+  background-image:
+    radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+}
 
-  .blue-glassmorphism {
-    background: rgb(39, 51, 89, 0.4);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(0, 0, 0, 0.3);
-  }
+.blue-glassmorphism {
+  background: rgb(39, 51, 89, 0.7);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
 
+.white-glassmorphism {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.59);
+}
   .blue-glassmorphism-border {
     background: rgb(39, 51, 89, 0.4);
     border-radius: 16px;
@@ -27,41 +36,50 @@
     border: 1px solid rgba(0, 0, 0, 0.3);
   }
 
-  .black-glassmorphism {
-    background: rgba(0, 0, 0, 0.4);
-    border-bottom-left-radius: 0;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(0, 0, 0, 0.3);
+.black-glassmorphism {
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom-left-radius: 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-  
-  .animate-blink {
-    animation: blink 1s linear infinite;
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
   }
 
-  .page-enter {
-    transform: translateX(100%);
+  50% {
+    opacity: 0;
   }
-  
-  .page-enter-active {
-    transform: translateX(0);
-    transition: transform 500ms;
-  }
-  
-  .page-exit {
-    transform: translateX(0);
-  }
-  
-  .page-exit-active {
-    transform: translateX(-100%);
-    transition: transform 500ms;
-  }
+}
 
-  
+.animate-blink {
+  animation: blink 1s linear infinite;
+}
+
+.page-enter {
+  transform: translateX(100%);
+}
+
+.page-enter-active {
+  transform: translateX(0);
+  transition: transform 500ms;
+}
+
+.page-exit {
+  transform: translateX(0);
+}
+
+.page-exit-active {
+  transform: translateX(-100%);
+  transition: transform 500ms;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

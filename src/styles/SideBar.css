@@ -1,0 +1,91 @@
+.side-bar {
+  position: fixed;
+  left: 2px;
+  top: 2px;
+  bottom: 2px;
+  width: 350px;
+}
+
+.profile {
+  height: 49.75%;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.break {
+  height: 0.5%;
+}
+
+.following {
+  height: 49.75%;
+  background-color: white;
+  border-radius: 5px;
+}
+.following-title {
+  color: rgb(206, 200, 200);
+  padding: 10px 16px;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.following-artist {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  transition: background-color 0.15s;
+}
+.following-artist:hover {
+  cursor: pointer;
+  background-color: rgb(242, 242, 243, 0.1);
+}
+.artist {
+  display: flex;
+  align-items: center;
+}
+
+.artist-img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.fol-artists {
+  overflow-y: auto;
+  max-height: 84%;
+}
+/* .fol-artists::-webkit-scrollbar {
+  display: none;
+} */
+
+.fol-artists::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+.fol-artists::-webkit-scrollbar-track {
+  background:rgb(15, 15, 39);
+}
+
+/* Handle */
+.fol-artists::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.fol-artists::-webkit-scrollbar-thumb:hover {
+  width:20px
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+/* .fol-artists {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+} */

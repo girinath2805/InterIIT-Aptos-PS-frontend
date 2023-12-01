@@ -32,6 +32,13 @@ html{
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.59);
 }
+  .blue-glassmorphism-border {
+    background: rgb(39, 51, 89, 0.4);
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+  }
 
 .black-glassmorphism {
   background: rgba(0, 0, 0, 0.4);

@@ -1,0 +1,13 @@
+.panel{
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    z-index: -1;
+}
+.artist-img-panel {
+    border-radius: 50%;
+    width: 300px;
+    height:300px;
+    object-fit: cover;
+    margin: 40px;
+  }

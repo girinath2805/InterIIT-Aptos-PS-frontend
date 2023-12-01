@@ -7,5 +7,6 @@ export {default as RevenueHistory} from './RevenueHistory'
 export {default as SideBar} from './SideBar'
 export {default as LogoutBtn} from './LogoutBtn'
 export {default as ArtistPanel} from './ArtistPanel'
+export {default as StreamerDash} from './StreamerDash'
 
 

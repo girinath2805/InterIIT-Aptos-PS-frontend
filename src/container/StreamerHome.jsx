@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navbar,Stream,RevenueHistory} from '../components'
+import {Navbar,Stream,RevenueHistory,StreamerDash} from '../components'
 import { Routes,Route, useLocation} from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
@@ -15,19 +15,15 @@ const StreamerHome = () => {
           classNames="page"
           timeout={300}
         >
-          <div style={{ minHeight: '100vh' }}>
+          <div style={{ minHeight: '100vh', overflowY:'auto' }}>
             <Routes location={location}>
+              <Route path='home' element={<StreamerDash/>}/>
               <Route path='stream' element={<Stream/>}/>
               <Route path='revenuehistory' element={<RevenueHistory/>}/>
             </Routes>
           </div>
         </CSSTransition>
       </TransitionGroup>
-      {location.pathname === "/home" && (
-        <div className='text-white'>
-            dashboard
-        </div>
-      )}
     </div>
   )
 }

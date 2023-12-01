@@ -41,7 +41,6 @@ const Signin = () => {
       const account = await wallet.account();
       console.log(account);
       localStorage.setItem('address', account.address); // { address: string, address: string }
-      localStorage.setItem('address', account.address); // { address: string, address: string }
 
     } catch (error) {
       // { code: 4001, message: "User rejected the request."}

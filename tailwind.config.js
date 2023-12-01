@@ -6,6 +6,7 @@ export default {
       'welcome':['Nunito', 'sans-serif'],
       'head':['Rubik', 'sans-serif'],
       'nav':['Quicksand', 'sans-seri'],
+      'live':['Nunito', 'sans-serif'],
     },
     extend: {
       screens: {
@@ -24,12 +25,22 @@ export default {
         },
         "slide-out": {
           "0%": {
+            "-webkit-transform": "translateX(120%)",
+            transform: "translateX(120%)",
+          },
+          "100%": {
             "-webkit-transform": "translateX(0%)",
             transform: "translateX(0%)",
           },
+        },
+        "slide-up": {
+          "0%": {
+            "-webkit-transform": "translateY(-120%)",
+            transform: "translateY(-120%)",
+          },
           "100%": {
-            "-webkit-transform": "translateX(-120%)",
-            transform: "translateX(-120%)",
+            "-webkit-transform": "translateY(0%)",
+            transform: "translateY(0%)",
           },
         },
       },

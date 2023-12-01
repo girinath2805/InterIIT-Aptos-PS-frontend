@@ -3,23 +3,21 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import { IoWalletOutline } from 'react-icons/io5';
+import { Bars } from 'react-loader-spinner';
 
 const Signup = () => {
   const [signer, setSigner] = useState('')
-  const [pfp, setPfp] = useState()
-  const [firstName, setFirstname] = useState('')
-  const [lastname, setLastname] = useState('')
-  const [password, setPassword] = useState('')
-  const [email, setEmail] = useState('')
-  const [confirmpassword, setConfirmpassword] = useState('')
-  const [match,setMatch] = useState(true)
+  const [isconnecting, setIsconnecting] = useState(false)
+  const [userName,setUsername] = useState('')
+  const [userNameerror,setUsernameerror] = useState(false)
 
 
   const defaultTheme = createTheme({
@@ -39,42 +37,44 @@ const Signup = () => {
     },
   });
 
-  useEffect(() => {
-    if (password == confirmpassword){
-      setMatch(true)
-    }
-    else{
-      setMatch(false)
-    }
-  },[confirmpassword])
 
-  
+  const navigate = useNavigate()
 
   const connectWallet = async () => {
-
     const getAptosWallet = () => {
       if ('aptos' in window) {
         return window.aptos;
       } else {
         alert('Petra wallet is not installed !')
-        window.open("https://petra.app/");
+        window.open('https://petra.app/');
       }
     };
     const wallet = getAptosWallet();
-  
+    localStorage.setItem('wallet', wallet); // { address: string, address: string }
+
+
+    setIsconnecting(true)
     try {
       const response = await wallet.connect();
       console.log(response); // { address: string, address: string }
 
       const account = await wallet.account();
-      setSigner(account)
-      console.log(signer.address); // { address: string, address: string }
+      console.log(account);
+      localStorage.setItem('address', account.address); // { address: string, address: string }
+
     } catch (error) {
       // { code: 4001, message: "User rejected the request."}
     }
+    setIsconnecting(false)
+    navigate('/streamerhome/home', { replace: true });
   }
 
-  const handleSignup = (() => {
+  const handleSignin = (() => {
+    if (!userName) {
+      setUsernameerror(true);
+      
+      return;
+    }
     connectWallet();
   })
 
@@ -99,73 +99,22 @@ const Signup = () => {
               </Typography>
               <Box component="form" noValidate sx={{ mt: 3 }}>
                 <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      autoComplete="off"
-                      name="firstName"
-                      required
-                      fullWidth
-                      id="firstName"
-                      label="First Name"
-                      sx={{
-                        "& .MuiOutlinedInput-root": {
-                          "& > fieldset": { borderColor: "gray", borderWidth: "2px" },
-                        },
-                        "& .MuiInputBase-root": {
-                          color: 'white'
-                        },
-                        "& .MuiOutlinedInput-root:hover": {
-                          "& > fieldset": {
-                            borderColor: "white"
-                          }
-                        }
-
-                      }}
-                      autoFocus
-                      InputLabelProps={{
-                        style: { color: 'grey' },
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      required
-                      fullWidth
-                      id="lastName"
-                      label="Last Name"
-                      name="lastName"
-                      autoComplete="off"
-                      onChange={(e) => setLastname(e.target.value)}
-                      InputLabelProps={{
-                        style: { color: 'grey' },
-                      }}
-                      sx={{
-                        "& .MuiOutlinedInput-root": {
-                          "& > fieldset": { borderColor: "gray", borderWidth: "2px" },
-                        },
-                        "& .MuiInputBase-root": {
-                          color: 'white'
-                        },
-                        "& .MuiOutlinedInput-root:hover": {
-                          "& > fieldset": {
-                            borderColor: "white"
-                          }
-                        }
-                      }}
-                    />
-                  </Grid>
                   <Grid item xs={12}>
                     <TextField
-                      required
                       fullWidth
                       id="userName"
                       label="User Name"
                       name="userName"
                       autoComplete="off"
-                      onChange={(e) => setLastname(e.target.value)}
+                      onChange={(e) => {
+                        setUsername(e.target.value);
+                        setUsernameerror(false);
+                      }}
                       InputLabelProps={{
                         style: { color: 'grey' },
                       }}
+                      error={userNameerror}
+                      helperText={userNameerror && 'User Name is required'}
                       sx={{
                         "& .MuiOutlinedInput-root": {
                           "& > fieldset": { borderColor: "gray", borderWidth: "2px" },
@@ -181,106 +130,35 @@ const Signup = () => {
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      id="email"
-                      label="Email Address"
-                      name="email"
-                      autoComplete="off"
-                      onChange={(e) => setEmail(e.target.value)}
-                      InputLabelProps={{
-                        style: { color: 'gray' },
-                      }}
-                      sx={{
-                        "& .MuiOutlinedInput-root": {
-                          "& > fieldset": { borderColor: "gray", borderWidth: "2px" },
-                        },
-                        "& .MuiInputBase-root": {
-                          color: 'white'
-                        },
-                        "& .MuiOutlinedInput-root:hover": {
-                          "& > fieldset": {
-                            borderColor: "white"
-                          }
-                        }
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="off"
-                      onChange={(e) => setPassword(e.target.value)}
-                      InputLabelProps={{
-                        style: { color: 'grey' },
-                      }}
-                      sx={{
-                        "& .MuiOutlinedInput-root": {
-                          "& > fieldset": { borderColor: "gray", borderWidth: "2px" },
-                        },
-                        "& .MuiInputBase-root": {
-                          color: 'white'
-                        },
-                        "& .MuiOutlinedInput-root:hover": {
-                          "& > fieldset": {
-                            borderColor: "white"
-                          }
-                        }
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      name="confirmPassword"
-                      label="Confirm Password"
-                      type="confirmPassword"
-                      id="password"
-                      autoComplete="off"
-                      onChange={(e) => setConfirmpassword(e.target.value)}
-                      InputLabelProps={{
-                        style: { color: 'grey' },
-                      }}
-                      sx={{
-                        "& .MuiOutlinedInput-root": {
-                          "& > fieldset": { borderColor: "gray", borderWidth: "2px" },
-                        },
-                        "& .MuiInputBase-root": {
-                          color: 'white'
-                        },
-                        "& .MuiOutlinedInput-root:hover": {
-                          "& > fieldset": {
-                            borderColor: "white"
-                          }
-                        }
-                      }}
-                    />
-                  </Grid>
-                  {!match && <span className='text-red-700 flex ml-5'>Password doesn't match</span>}
                 </Grid>
-                <Button
-                  onClick={handleSignup}
+                {!isconnecting && <Button
+                  onClick={handleSignin}
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
+                  className='flex flex-row gap-2'
                 >
-                  Sign Up
-                </Button>
-                <Grid container justifyContent="flex-end">
-                  <Grid item>
-                    <Link href="signin" variant="body2">
-                      Already have an account? Sign in
-                    </Link>
-                  </Grid>
-                </Grid>
+                  Connect Wallet
+                  <IoWalletOutline fontSize={21} />
+                </Button>}
+                {isconnecting && <Button
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 , cursor:"default"}}
+                  className='flex flex-row gap-2'
+                  
+                >
+                  Connecting
+                  <Bars
+                    height="25"
+                    width="20"
+                    color="#fff"
+                    ariaLabel="bars-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                  />
+                </Button>}
               </Box>
             </Box>
           </Container>

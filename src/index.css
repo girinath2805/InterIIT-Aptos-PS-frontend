@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+  scroll-behavior: smooth;
+}
+
 .gradient-bg-welcome {
   background-color: #0f0e13;
   background-image:
@@ -10,7 +14,7 @@
     radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
 }
 
-.blue-glassmorphism {
+.blue-glassmorphism-1 {
   background: rgb(39, 51, 89, 0.7);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
@@ -22,7 +26,7 @@
 .white-glassmorphism {
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
+  border-radius: 9px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);

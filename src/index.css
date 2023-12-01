@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
+::-webkit-scrollbar{
   scroll-behavior: smooth;
+  display: none;
 }
 
 .gradient-bg-welcome {
@@ -82,8 +83,4 @@ html{
 .page-exit-active {
   transform: translateX(-100%);
   transition: transform 500ms;
-}
-
-::-webkit-scrollbar {
-  display: none;
 }

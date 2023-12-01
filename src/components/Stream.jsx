@@ -30,11 +30,9 @@ const Stream = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [micAccess, setMicAccess] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState(null);
-  const [audioChunks, setAudioChunks] = useState([]);
-  const [audioUrl, setAudioUrl] = useState(null);
   const [isLive, setIsLive] = useState(localStorage.getItem('live') === 'true');
-  const [streamName,setStreamname] = useState('');
-  const [tag,setTag] = useState();
+  const [streamName, setStreamname] = useState('');
+  const [tag, setTag] = useState();
   const [streamNameError, setStreamNameError] = useState(false);
   const [tagError, setTagError] = useState(false);
 
@@ -46,35 +44,58 @@ const Stream = () => {
       setTagError(!tag);
       return;
     }
+    const initializeMediaRecorder = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const newMediaRecorder = new MediaRecorder(stream);
+        setMediaRecorder(newMediaRecorder);
+        setMicAccess(true);
+      } catch (err) {
+        console.error(err);
+        setMicAccess(false);
+      }
+    };
+  
+    const checkMicPermission = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        stream.getTracks().forEach(track => track.stop());
+        // If the getUserMedia call succeeds, the user already has permission
+        setMicAccess(true);
+      } catch (err) {
+        // If the getUserMedia call fails, prompt the user for permission
+        initializeMediaRecorder();
+      }
+    };
+  
+    if (!micAccess) {
+      checkMicPermission();
+    } else {
+      initializeMediaRecorder();
+    }
 
-    alert('The stream has started');
     setIsLive(true);
     localStorage.setItem('live', true);
     setStreamname('')
     setTag('')
-  };
-  
-  
+    alert('The stream has started');
+  }
+
   const handleStop = () => {
+    if (mediaRecorder) {
+      // Stop the media recorder
+      mediaRecorder.stop();
+
+      // Release the microphone resources
+      const stream = mediaRecorder.stream;
+      const tracks = stream.getTracks();
+      tracks.forEach(track => track.stop());
+    }
+
+    // Update state to reflect that the stream is no longer live
     setIsLive(false);
     localStorage.setItem('live', false);
-  };
-  
-  // ...
-  
-  useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ audio: true })
-      .then(stream => {
-        const newMediaRecorder = new MediaRecorder(stream);
-        setMediaRecorder(newMediaRecorder);
-        setMicAccess(true);
-      })
-      .catch(err => {
-        console.error(err);
-        setMicAccess(false);
-      });
-  }, []);
-  
+  }
 
   const handleMute = () => {
     if (mediaRecorder.state === 'recording') {
@@ -127,7 +148,7 @@ const Stream = () => {
                       style: { color: 'black' },
                     }}
                     error={streamNameError}
-                      helperText={streamNameError && 'Stream Name is required'}
+                    helperText={streamNameError && 'Stream Name is required'}
                     sx={{
                       "& .MuiOutlinedInput-root": {
                         "& > fieldset": { borderColor: "gray", borderWidth: "2px" },
@@ -146,7 +167,7 @@ const Stream = () => {
                     }}
                   />
                 </Grid>
-                
+
                 <Grid item xs={12}>
                   <TextField
                     autoComplete="off"
@@ -164,7 +185,7 @@ const Stream = () => {
                       style: { color: 'black' },
                     }}
                     error={tagError}
-                      helperText={tagError && 'Tag is required'}
+                    helperText={tagError && 'Tag is required'}
                     sx={{
                       "& .MuiOutlinedInput-root": {
                         "& > fieldset": { borderColor: "gray", borderWidth: "2px" },
@@ -178,7 +199,7 @@ const Stream = () => {
                         }
                       },
                       mb: 2,
-                      mr:7
+                      mr: 7
                     }}
                   />
                 </Grid>
@@ -187,22 +208,21 @@ const Stream = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   mt: 2,
-                  mb:2
+                  mb: 2
                 }}>
-                  <Button variant="contained" onClick={handleStart} endIcon={<LuMic2/>}>Start</Button>
+                  <Button variant="contained" onClick={handleStart} endIcon={<LuMic2 />}>Start</Button>
                 </Grid>
               </Box>
 
               <Box
                 sx={{
-                  display: 'flex',  
+                  display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   mt: 1,
                 }}
               >
               </Box>
-              {audioUrl && <audio src={audioUrl} controls />}  {/* Audio player */}
             </Widget>
           </Box>
         </div >}
@@ -256,21 +276,21 @@ const Stream = () => {
 
               </Stack>
               <Grid sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  textAlign: 'center', // Center text horizontally
-                  mx: 'auto', // Center the box horizontally
-                  mt:4,
-                  mb:1
-                }}>
-                <Button variant='contained' onClick = {handleStop} 
-                sx={{
-                  backgroundColor:'#F44336',
-                  ':hover': {
-                    bgcolor: 'red',
-                  }
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center', // Center text horizontally
+                mx: 'auto', // Center the box horizontally
+                mt: 4,
+                mb: 1
+              }}>
+                <Button variant='contained' onClick={handleStop}
+                  sx={{
+                    backgroundColor: '#F44336',
+                    ':hover': {
+                      bgcolor: 'red',
+                    }
                   }}>End stream</Button>
               </Grid>
             </Widget>

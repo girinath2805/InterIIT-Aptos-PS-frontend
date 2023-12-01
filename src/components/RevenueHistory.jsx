@@ -68,7 +68,7 @@ const RevenueHistory = () => {
   return (
     <div className='text-white'>
       <div className='flex justify-center text-center text-4xl font-extrabold mt-7 py-7 font-welcome'>
-        Your Recent Transactions !
+        Transaction History
       </div>
       <div className='mx-10'>
         <TableContainer component={Paper} sx={{borderRadius:'10px'}}>
@@ -76,7 +76,7 @@ const RevenueHistory = () => {
             <TableHead>
               <TableRow>
                 <StyledTableCell>Address</StyledTableCell>
-                <StyledTableCell align="right">Amount</StyledTableCell>
+                <StyledTableCell align="right">Amount (in APT)</StyledTableCell>
                 <StyledTableCell align="right">Time</StyledTableCell>
                 <StyledTableCell align="right">Date</StyledTableCell>
                 <StyledTableCell align="right">Transaction Hash</StyledTableCell>

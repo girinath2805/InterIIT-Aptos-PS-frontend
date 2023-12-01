@@ -3,7 +3,6 @@ import { HiMenuAlt4 } from 'react-icons/hi'
 import { AiOutlineClose } from 'react-icons/ai'
 import { NavLink } from 'react-router-dom';
 import { CgProfile } from "react-icons/cg";
-import { MdOutlineContentCopy } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.svg'
 import Box from '@mui/material/Box';
@@ -92,11 +91,12 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      // Exclude the menu button and close button
-      const isMenuButton = event.target.classList.contains('menu-button'); // Add the appropriate class to your menu button
-      const isCloseButton = event.target.classList.contains('close-button'); // Add the appropriate class to your close button
+      // Exclude the menu button, close button, and NavLink from closing the sidebar
+      const isMenuButton = event.target.classList.contains('menu-button');
+      const isCloseButton = event.target.classList.contains('close-button');
+      const isNavLink = event.target.tagName === 'A' && event.target.getAttribute('href');
   
-      if (!isMenuButton && !isCloseButton && sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+      if (!isMenuButton && !isCloseButton && !isNavLink && sidebarRef.current && !sidebarRef.current.contains(event.target)) {
         setToggleMenu(false);
       }
     };
@@ -108,7 +108,25 @@ const Navbar = () => {
     return () => {
       document.removeEventListener('click', handleOutsideClick);
     };
-  }, []);
+  }, [toggleMenu]);
+
+  useEffect(() => {
+    const handleWheel = () => {
+      // Close the sidebar when the user starts scrolling down
+      if (toggleMenu && window.scrollY > 0) {
+        setToggleMenu(false);
+      }
+    };
+  
+    // Add event listener for wheel events
+    window.addEventListener('wheel', handleWheel);
+  
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+    };
+  }, [toggleMenu]);
+  
 
   useEffect(() => {
     const handleOutsideClick = (event) => {

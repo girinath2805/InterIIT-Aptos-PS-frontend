@@ -1,13 +1,59 @@
-.panel{
-    display: flex;
-    align-items: center;
-    margin-top: 50px;
-    z-index: -1;
+.panel {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  z-index: -1;
+  font-family: Roboto, arial, sans-serif;
+  flex-direction: column;
+  min-width: 300px;
 }
+
 .artist-img-panel {
-    border-radius: 50%;
-    width: 300px;
-    height:300px;
-    object-fit: cover;
-    margin: 40px;
+  border-radius: 50%;
+  width: 80%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+  margin: 40px;
+  aspect-ratio: 1/1;
+}
+
+.panel-descript {
+  color: white;
+  text-align: left;
+}
+
+.panel-artist-text {
+  font-size: 1.3vw;
+}
+
+.panel-artist-name {
+  font-size: 2.8vw;
+  margin-top: 0;
+}
+
+.followers {
+  color: rgb(178, 179, 176);
+  text-align: left;
+  font-size: 1vw;
+}
+
+@media (max-width: 1484px) {
+    .panel-artist-name {
+        font-size: 2.5vw;
+        margin-top: 0;
+      }
+}
+
+@media (max-width: 1330px) {
+    .panel-artist-name {
+        font-size: 2vw;
+        margin-top: 0;
+      }
+}
+
+@media (min-width: 1200px) {
+  .panel {
+    flex-direction: row;
   }
+}

@@ -9,6 +9,7 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import { Button } from '@mui/material';
 import { LuMic2 } from "react-icons/lu";
+import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 
 
 const Widget = styled('div')(({ theme }) => ({
@@ -35,8 +36,15 @@ const Stream = () => {
   const [tag, setTag] = useState();
   const [streamNameError, setStreamNameError] = useState(false);
   const [tagError, setTagError] = useState(false);
+  const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
 
+  const handleConfirmationDialogOpen = () => {
+    setConfirmationDialogOpen(true);
+  };
 
+  const handleConfirmationDialogClose = () => {
+    setConfirmationDialogOpen(false);
+  };
 
   const handleStart = () => {
     if (!streamName || !tag) {
@@ -82,6 +90,7 @@ const Stream = () => {
   }
 
   const handleStop = () => {
+
     if (mediaRecorder) {
       // Stop the media recorder
       mediaRecorder.stop();
@@ -95,6 +104,7 @@ const Stream = () => {
     // Update state to reflect that the stream is no longer live
     setIsLive(false);
     localStorage.setItem('live', false);
+    handleConfirmationDialogClose();
   }
 
   const handleMute = () => {
@@ -117,8 +127,8 @@ const Stream = () => {
       {isLive && <div className='text-5xl flex justify-center text-white font-semibold my-8 font-live'>
         You are Live !
       </div>}
-      <div className='flex h-auto items-center justify-center white-glassmorphism mx-auto w-min my-10'>
-        {!isLive && <div className=''>
+      <div className='absolute flex h-auto items-center justify-center white-glassmorphism mx-auto w-min'>
+        {!isLive && <div className='flex justify-center text-center text-white'>
           <Box sx={{ display: 'flex', width: '100%', overflow: 'hidden', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginX: 'auto' }}>
             <Widget>
               <Box
@@ -285,7 +295,7 @@ const Stream = () => {
                 mt: 4,
                 mb: 1
               }}>
-                <Button variant='contained' onClick={handleStop}
+                <Button variant='contained' onClick={handleConfirmationDialogOpen}
                   sx={{
                     backgroundColor: '#F44336',
                     ':hover': {
@@ -296,6 +306,16 @@ const Stream = () => {
             </Widget>
           </Box>
         }
+        <Dialog open={isConfirmationDialogOpen} onClose={handleConfirmationDialogClose}>
+        <DialogTitle>Stop Streaming?</DialogTitle>
+        <DialogContent>
+          Are you sure you want to stop the stream?
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleConfirmationDialogClose}>Cancel</Button>
+          <Button onClick={handleStop}>Stop Stream</Button>
+        </DialogActions>
+      </Dialog>
       </div >
     </>
   )

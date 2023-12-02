@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
@@ -14,11 +13,6 @@ import Orders from './Orders';
 const defaultTheme = createTheme();
 
 const StreamerDash = () => {
-
-const [open, setOpen] = React.useState(true);
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>

@@ -149,7 +149,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className="w-full flex md:justify-center justify-between items-center p-4 black-glassmorphism font-head">
+    <nav className="w-full flex md:justify-center justify-between items-center p-4 black-glassmorphism font-head z-1200">
       <div className="absolute md:flex hidden left-2 items-center cursor-pointer ">
         <img src={logo} alt="logo" className="cursor-pointer w-23 h-[5rem] color-white" />
         <span className='items-center text-white text-xl'>VibeChain</span>

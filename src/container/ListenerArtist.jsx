@@ -6,7 +6,7 @@ import "../styles/ListenerArtist.css"
 
 export default function ListenerArtist() {
     return (
-        <div className=" ListBody relative h-screen overflow-auto gradient-bg-welcome bg-scroll pt-2 pb-2.5">
+        <div className=" ListBody relative h-screen overflow-y-auto overflow-x-hidden gradient-bg-welcome bg-scroll pt-2 pb-2.5">
             <SideBar />
             <div className="main">
                 <LogoutBtn />

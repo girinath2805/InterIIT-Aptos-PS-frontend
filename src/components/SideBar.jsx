@@ -6,11 +6,11 @@ import { display } from '@mui/system';
 function SideBar() {
     return (
         <div className="side-bar">
-            <div className="profile blue-glassmorphism" >
+            <div className="profile blue-glassmorphism-sidebar" >
                 <p>This is profile</p>
             </div>
             <div className="break"></div>
-            <div className="following blue-glassmorphism ">
+            <div className="following blue-glassmorphism-sidebar ">
                 <div className="following-title"><SlUserFollowing className="mr-2" />Following</div>
                 <hr className="h-0.5 border-none bg-gray-500 ml-3 mr-2" />
                 <div className="fol-artists">

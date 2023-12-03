@@ -8,5 +8,4 @@ export {default as SideBar} from './SideBar'
 export {default as LogoutBtn} from './LogoutBtn'
 export {default as ArtistPanel} from './ArtistPanel'
 export {default as StreamerDash} from './StreamerDash'
-
-
+export {default as Error404} from './Error404'

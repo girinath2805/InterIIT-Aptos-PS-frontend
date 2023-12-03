@@ -19,6 +19,7 @@ const StreamerHome = () => {
         >
           <div style={{ minHeight: '100vh', overflowY:'auto' }} className='my-[7rem]'>
             <Routes location={location}>
+              <Route path='*' element={<StreamerDash/>}/>
               <Route path='stream' element={<Stream/>}/>
               <Route path='revenuehistory' element={<RevenueHistory/>}/>
             </Routes>

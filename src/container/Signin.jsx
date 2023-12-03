@@ -12,12 +12,14 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { IoWalletOutline } from "react-icons/io5";
 import { Bars } from 'react-loader-spinner'
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const defaultTheme = createTheme();
 
 const Signin = () => {
 
   const [isconnecting, setIsconnecting] = useState(false)
+  const [role, setRole] = useState('')
   const navigate = useNavigate()
 
   const connectWallet = async () => {
@@ -46,7 +48,7 @@ const Signin = () => {
       // { code: 4001, message: "User rejected the request."}
     }
     setIsconnecting(false)
-    navigate('/streamerhome/home', { replace: true });
+    navigate('/streamer/home', { replace: true });
   }
 
   const handleSignin = (() => {
@@ -75,6 +77,34 @@ const Signin = () => {
                 Sign in
               </Typography>
               <Box component="form" noValidate sx={{ mt: 1 }}>
+                <FormControl fullWidth sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& > fieldset": { borderColor: "gray", borderWidth: "2px" },
+                  },
+                  "& .MuiInputBase-root": {
+                    color: 'white'
+                  },
+                  "& .MuiOutlinedInput-root:hover": {
+                    "& > fieldset": {
+                      borderColor: "white"
+                    }
+                  },
+                  "& .MuiSelect-icon": {
+                    color: 'white', // Set the color of the arrow icon to white
+                  },
+                }}>
+                  <InputLabel id="role" sx={{ color: 'white' }}>Role</InputLabel>
+                  <Select
+                    labelId="role"
+                    id="role"
+                    label="Role"
+                    onChange={(e) => setRole(e.target.value)}
+
+                  >
+                    <MenuItem value={10}>Listener</MenuItem>
+                    <MenuItem value={20}>Artist</MenuItem>
+                  </Select>
+                </FormControl>
                 {!isconnecting && <Button
                   onClick={handleSignin}
                   fullWidth
@@ -88,9 +118,9 @@ const Signin = () => {
                 {isconnecting && <Button
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 , cursor:"default"}}
+                  sx={{ mt: 3, mb: 2, cursor: "default" }}
                   className='flex flex-row gap-2'
-                  
+
                 >
                   Connecting
                   <Bars

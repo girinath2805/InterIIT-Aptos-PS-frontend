@@ -71,7 +71,7 @@ const Signup = () => {
       // { code: 4001, message: "User rejected the request."}
     }
     setIsconnecting(false)
-    navigate('/streamer/home', { replace: true });
+    navigate(`/${role}/home`, { replace: true });
   }
 
   const handleSignup = (() => {
@@ -159,8 +159,8 @@ const Signup = () => {
                         onChange={(e) => setRole(e.target.value)}
 
                       >
-                        <MenuItem value={10}>Listener</MenuItem>
-                        <MenuItem value={20}>Artist</MenuItem>
+                        <MenuItem value='listener'>Listener</MenuItem>
+                        <MenuItem value='streamer'>Artist</MenuItem>
                       </Select>
                     </FormControl>
                   </Grid>

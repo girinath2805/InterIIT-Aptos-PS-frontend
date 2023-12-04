@@ -9,6 +9,9 @@ export default {
       'live':['Nunito', 'sans-serif'],
     },
     extend: {
+      zIndex: {
+        '1200': 1200,
+      },
       screens: {
         mf: "990px",
       },

@@ -12,12 +12,17 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { IoWalletOutline } from 'react-icons/io5';
 import { Bars } from 'react-loader-spinner';
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+
 
 const Signup = () => {
   const [signer, setSigner] = useState('')
   const [isconnecting, setIsconnecting] = useState(false)
-  const [userName,setUsername] = useState('')
-  const [userNameerror,setUsernameerror] = useState(false)
+  const [userName, setUsername] = useState('')
+  const [userNameerror, setUsernameerror] = useState(false)
+  const [role, setRole] = useState('')
+  const [invalidname, setInvalidname] = useState(false)
+
 
 
   const defaultTheme = createTheme({
@@ -66,13 +71,12 @@ const Signup = () => {
       // { code: 4001, message: "User rejected the request."}
     }
     setIsconnecting(false)
-    navigate('/streamerhome/home', { replace: true });
+    navigate('/streamer/home', { replace: true });
   }
 
-  const handleSignin = (() => {
-    if (!userName) {
+  const handleSignup = (() => {
+    if (!userName || userName.length > 20) {
       setUsernameerror(true);
-      
       return;
     }
     connectWallet();
@@ -114,7 +118,7 @@ const Signup = () => {
                         style: { color: 'grey' },
                       }}
                       error={userNameerror}
-                      helperText={userNameerror && 'User Name is required'}
+                      helperText={userNameerror && 'User Name is required and should be max 20 characters'}
                       sx={{
                         "& .MuiOutlinedInput-root": {
                           "& > fieldset": { borderColor: "gray", borderWidth: "2px" },
@@ -130,9 +134,39 @@ const Signup = () => {
                       }}
                     />
                   </Grid>
+                  <Grid item xs={12}>
+                    <FormControl fullWidth sx={{
+                      "& .MuiOutlinedInput-root": {
+                        "& > fieldset": { borderColor: "gray", borderWidth: "2px" },
+                      },
+                      "& .MuiInputBase-root": {
+                        color: 'white'
+                      },
+                      "& .MuiOutlinedInput-root:hover": {
+                        "& > fieldset": {
+                          borderColor: "white"
+                        }
+                      },
+                      "& .MuiSelect-icon": {
+                        color: 'white', // Set the color of the arrow icon to white
+                      },
+                    }}>
+                      <InputLabel id="role" sx={{ color: 'white' }}>Role</InputLabel>
+                      <Select
+                        labelId="role"
+                        id="role"
+                        label="Role"
+                        onChange={(e) => setRole(e.target.value)}
+
+                      >
+                        <MenuItem value={10}>Listener</MenuItem>
+                        <MenuItem value={20}>Artist</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
                 </Grid>
                 {!isconnecting && <Button
-                  onClick={handleSignin}
+                  onClick={handleSignup}
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
@@ -144,9 +178,9 @@ const Signup = () => {
                 {isconnecting && <Button
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 , cursor:"default"}}
+                  sx={{ mt: 3, mb: 2, cursor: "default" }}
                   className='flex flex-row gap-2'
-                  
+
                 >
                   Connecting
                   <Bars

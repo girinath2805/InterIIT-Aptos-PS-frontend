@@ -2,8 +2,8 @@ import React from 'react';
 
 const SearchBar = () => {
   return (
-    <div className="w-full md:w-1/2 lg:w-1/3">
-      <form method="GET">
+    <div className="w-full lg:w-1/3">
+      <form method="GET" action="/listener/artist">
         <div className="relative text-gray-600 focus-within:text-gray-400">
           <span className="absolute inset-y-0 left-0 flex items-center pl-2">
             <button type="submit" className="p-1 focus:outline-none focus:shadow-outline">

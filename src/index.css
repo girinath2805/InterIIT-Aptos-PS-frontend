@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-::-webkit-scrollbar{
+body {
+  -moz-user-select: none; /* firefox */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE */
+  user-select: none; /* Standard syntax */
+}
+::-webkit-scrollbar {
   scroll-behavior: smooth;
   display: none;
 }
@@ -28,8 +34,7 @@
 }
 .blue-glassmorphism-artist-panel {
   background: rgb(39, 51, 89, 0.4);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); */
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -38,7 +43,6 @@
 }
 .blue-glassmorphism-sidebar {
   background: rgb(39, 51, 89, 0.4);
-  border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -54,12 +58,12 @@
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.59);
 }
-.blue-glassmorphism-border {
+.blue-glassmorphism-songs {
   background: rgb(39, 51, 89, 0.4);
-  border-radius: 16px;
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); */
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.59);
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 .black-glassmorphism {
   background: rgba(0, 0, 0, 0.4);

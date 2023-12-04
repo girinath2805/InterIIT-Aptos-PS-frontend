@@ -1,0 +1,30 @@
+.main {
+  margin-left: 372px;
+  margin-right: 20px;
+}
+.main-components {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 65px;
+}
+.live-chat-window {
+  height: 600px;
+  width: 500px;
+}
+@media (max-width: 1250px) {
+  .live-chat-window {
+    display: none;
+  }
+  .main-components {
+    justify-content: center;
+  }
+}
+@media (max-width:750px){
+  .live-player{
+    flex: none;
+  }
+  .main-components{
+    display: block;
+  }
+}

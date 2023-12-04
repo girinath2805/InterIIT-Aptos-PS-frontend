@@ -1,0 +1,49 @@
+.live-panel {
+  display: flex;
+  align-items: center;
+  z-index: -1;
+  font-family: Roboto, arial, sans-serif;
+  flex-direction: column;
+  width: 40vw;
+  min-width: 360px;
+  padding-bottom: 20px;
+  border-radius: 16px;
+}
+
+.live-artist-img-panel {
+  border-radius: 50%;
+  width: 80%;
+  max-width: 200px;
+  height: auto;
+  object-fit: cover;
+  margin: 40px;
+  aspect-ratio: 1/1;
+}
+.live-components {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.live-panel-descript {
+  color: white;
+  text-align: center;
+}
+
+.live-panel-artist-text {
+  font-size: max(1.3vw, 12px); /*1.3*/
+}
+
+.live-panel-artist-name {
+  font-size:max( 2vw,20px); /* 2.8*/
+  margin-top: 0;
+}
+
+.live-followers {
+  color: rgb(178, 179, 176);
+  text-align: center;
+  font-size: 1vw;
+}
+.live-listen-btn {
+  position: static;
+}

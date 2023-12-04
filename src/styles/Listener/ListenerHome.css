@@ -1,6 +1,7 @@
-.main {
-  margin-left: 372px;
-  margin-right: 20px;
+.home-main {
+  margin-left: 382px;
+  margin-right: 10px;
+  min-width: 330px;
 }
 
 .sec-part {
@@ -33,4 +34,16 @@
   margin-bottom: 40px;
   font-weight: bold;
   font-size: 30px;
+}
+@media (max-width: 1007px) {
+  .sec-part {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

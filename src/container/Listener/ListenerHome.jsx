@@ -1,9 +1,9 @@
 import React from "react";
-import { LiveCard } from "../components"
-import { SearchBar } from "../components"
-import { SideBar } from "../components"
-import { LogoutBtn } from "../components"
-import "../styles/ListenerHome.css"
+import { LiveCard } from "../../components"
+import { SearchBar } from "../../components"
+import { SideBar } from "../../components"
+import { LogoutBtn } from "../../components"
+import "../../styles/Listener/ListenerHome.css"
 
 
 export default function ListenerHome() {
@@ -23,7 +23,7 @@ export default function ListenerHome() {
     return (
         <div className=" ListBody relative h-screen overflow-y-auto overflow-x-hidden gradient-bg-welcome bg-scroll pt-2 pb-2.5">
             <SideBar />
-            <div className="main">
+            <div className="home-main">
                 <LogoutBtn />
                 <div className="sec-part">
                     <p className="greet">{greet}</p>

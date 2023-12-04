@@ -21,8 +21,7 @@ const Signup = () => {
   const [userName, setUsername] = useState('')
   const [userNameerror, setUsernameerror] = useState(false)
   const [role, setRole] = useState('')
-  const [invalidname, setInvalidname] = useState(false)
-
+  const [roleerror, setRoleerror] = useState()
 
 
   const defaultTheme = createTheme({
@@ -75,6 +74,11 @@ const Signup = () => {
   }
 
   const handleSignup = (() => {
+    if (!role) {
+      setRoleerror(true)
+      return
+    }
+
     if (!userName || userName.length > 20) {
       setUsernameerror(true);
       return;
@@ -157,6 +161,7 @@ const Signup = () => {
                         id="role"
                         label="Role"
                         onChange={(e) => setRole(e.target.value)}
+                        error={roleerror}
 
                       >
                         <MenuItem value='listener'>Listener</MenuItem>

@@ -20,6 +20,7 @@ const Signin = () => {
 
   const [isconnecting, setIsconnecting] = useState(false)
   const [role, setRole] = useState('')
+  const [roleerror,setRoleerror] = useState()
   const navigate = useNavigate()
 
   const connectWallet = async () => {
@@ -52,6 +53,10 @@ const Signin = () => {
   }
 
   const handleSignin = (() => {
+    if(!role){
+      setRoleerror(true)
+      return
+    }
     connectWallet();
   })
 
@@ -99,7 +104,7 @@ const Signin = () => {
                     id="role"
                     label="Role"
                     onChange={(e) => setRole(e.target.value)}
-
+                    error={roleerror}
                   >
                     <MenuItem value='listener'>Listener</MenuItem>
                     <MenuItem value='streamer'>Artist</MenuItem>

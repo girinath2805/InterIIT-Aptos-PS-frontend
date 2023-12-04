@@ -75,7 +75,7 @@ const Signup = () => {
   }
 
   const handleSignup = (() => {
-    if (!userName || userName.length > 15) {
+    if (!userName || userName.length > 20) {
       setUsernameerror(true);
       return;
     }
@@ -118,7 +118,7 @@ const Signup = () => {
                         style: { color: 'grey' },
                       }}
                       error={userNameerror}
-                      helperText={userNameerror && 'User Name is required and should be max 15 characters'}
+                      helperText={userNameerror && 'User Name is required and should be max 20 characters'}
                       sx={{
                         "& .MuiOutlinedInput-root": {
                           "& > fieldset": { borderColor: "gray", borderWidth: "2px" },

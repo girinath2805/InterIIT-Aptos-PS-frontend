@@ -4,7 +4,7 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { NavLink } from 'react-router-dom';
 import { CgProfile } from "react-icons/cg";
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.svg'
+import logo from '../../assets/logo.svg'
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';

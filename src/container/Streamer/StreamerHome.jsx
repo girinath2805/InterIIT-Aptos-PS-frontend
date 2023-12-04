@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navbar,Stream,RevenueHistory,StreamerDash} from '../components'
+import {Navbar,Stream,RevenueHistory,StreamerDash} from '../../components'
 import { Routes,Route, useLocation} from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
